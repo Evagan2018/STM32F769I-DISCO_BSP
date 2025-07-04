@@ -21,8 +21,7 @@ jobs:
         solution: [
           {name: FileSystem, dir: FileSystem, layer_ac6: ./BSP/Layers/Default, layer_gcc: ./.ci/Layers/Default_GCC},
           {name: Network,    dir: Network,    layer_ac6: ./BSP/Layers/Default, layer_gcc: ./.ci/Layers/Default_GCC},
-          {name: USB_Device, dir: USB/Device, layer_ac6: ./BSP/Layers/Default, layer_gcc: ./.ci/Layers/Default_GCC},
-#         {name: USB_Host,   dir: USB/Host,   layer_ac6: ./BSP/Layers/Default, layer_gcc: ./.ci/Layers/Default_GCC}
+          {name: USB_Device, dir: USB/Device, layer_ac6: ./BSP/Layers/Default, layer_gcc: ./.ci/Layers/Default_GCC}
         ]
 
     steps:
@@ -86,7 +85,7 @@ jobs:
         run: |
           if [ -e ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ]
           then
-             cp -rf ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
+             cp -f ./.ci/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml ./CI/MW-RefApps/Examples/${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
           fi
 
       - name: Add the board layer to the ${{ matrix.solution.dir }}/${{ matrix.solution.name }}.csolution.yml
